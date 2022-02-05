@@ -1,0 +1,76 @@
+﻿@using  MVC_PartialView.ViewModel;
+@model IEnumerable<PeopleViewModel>
+
+@{ ViewBag.Title = "People_IndexPage"; Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+
+}<h2>People Index Page</h2>
+@* Creating form for filtering and adding people*@
+
+<form id="Creatingform" action="filter" method="get">
+    <h3><label>Filter the list</label></h3>
+    <br />
+    <input type="text" name="filter" required />
+    <input id="AddButton" type="submit" value="Filter">
+</form>
+
+
+<form id="Creatingform" asp-controller="Home" asp-action="AddPerson" method="post">
+    <h3><label>Add a new person to the list</label></h3>
+    <br />
+    <label>Name: </label>
+    <input id="input" type="text" name="Name" required /><br />
+
+    <label>PhoneNumber: </label>
+    <input id="input" type="number" name="PhoneNum" required /><br />
+
+    <label>City: </label>
+    <input id="input" type="text" name="City" required /><br />
+    <input id="AddButton" type="submit" value="Submit">
+</form>
+
+
+
+@*Styling forms *@
+<style>
+  
+
+
+    tr:nth-child(even) {
+        background-color: rgb(183 182 182 / 0.15);
+    }
+
+    #input {
+        margin: 5px;
+        border: 1px solid #dddddd;
+        color: gray;
+    }
+
+    #Creatingform {
+        width: 70%;
+        border: 1px solid #dddddd;
+        background-color: lightsteelblue;
+        padding-left: 50px;
+    }
+
+    #AddButton {
+        background-color: gray;
+        color: white;
+        width: 100px;
+        margin: 20px;
+    }
+</style>
+
+
+
+
+
+@foreach (var item in Model)
+{
+    <partial name="Partial/Row" model="item" />
+}
+
+
+
+

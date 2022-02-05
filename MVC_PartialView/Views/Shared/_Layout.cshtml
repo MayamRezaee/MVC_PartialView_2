@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>@Html.ActionLink("Home","Index","Home")</div>
+    <div>
+        @RenderBody()
+
+    </div>
+    <footer>@DateTime.Now<br>Maryam Rezaee</footer>
+</body>
+</html>

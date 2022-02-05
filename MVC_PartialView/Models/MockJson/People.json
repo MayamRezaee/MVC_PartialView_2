@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 4,
+    "Name": "Sara",
+    "PhoneNumber": 9123456789,
+    "City": "Delhi"
+  },
+  {
+    "Id": 5,
+    "Name": "Sara",
+    "PhoneNumber": 9123456789,
+    "City": "Paris"
+  },
+  {
+    "Id": 6,
+    "Name": "Hanna",
+    "PhoneNumber": 1234,
+    "City": "stockholm"
+  },
+  {
+    "Id": 9,
+    "Name": "Pontus",
+    "PhoneNumber": 43234247987,
+    "City": "Melborn"
+  },
+  {
+    "Id": 10,
+    "Name": "Hampus",
+    "PhoneNumber": 6878,
+    "City": "Melborn"
+  },
+  {
+    "Id": 11,
+    "Name": "Jonathan",
+    "PhoneNumber": 6768789787,
+    "City": "Frankfurt"
+  }
+]
