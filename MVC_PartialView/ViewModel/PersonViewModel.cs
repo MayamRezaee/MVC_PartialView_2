@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVC_PartialView.ViewModel
 {
-    public class PeopleViewModel
+    public class PersonViewModel
     {
         public int Id;
         public string Name;
