@@ -1,0 +1,31 @@
+﻿@using  MVC_PartialView.ViewModel;
+@model PersonViewModel
+
+@{
+    string backgroundColor = "#ffffff";
+    if (Model.Index % 2 != 0) {
+        backgroundColor = "#e3e3e3";
+    }
+}
+
+<div class="row personRow" style="background-color: @backgroundColor">
+    <div class="col-md-2">
+        <h4>@Model.Id</h4>
+    </div>
+
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary" onclick="DeletePerson(@Model.Id,this)">Delete</button>
+    </div>
+
+    <div class="col-md-3">
+        <h4>@Model.Name</h4>
+    </div>
+
+    <div class="col-md-2">
+        <h4>@Model.PhoneNum</h4>
+    </div>
+
+    <div class="col-md-3">
+        <h4>@Model.City</h4>
+    </div>
+</div>

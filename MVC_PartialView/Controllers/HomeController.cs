@@ -13,6 +13,7 @@ namespace MVC_PartialView.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly PersonRepository _personRepository;
         public HomeController(){}
 
         public IActionResult Index()
@@ -43,26 +44,27 @@ namespace MVC_PartialView.Controllers
             return View("Index", GetAllUsers());
         }
 
-
+        [HttpGet]
         //Get user list from PeopleViewModel
-        private IEnumerable<PeopleViewModel> GetAllUsers() {
+        private IEnumerable<PersonViewModel> GetAllUsers() {
             return GetUsers(PersonRepository.GetIns().GetAll());
         }
 
-        private IEnumerable<PeopleViewModel> GetUsers(List<Person> source) {
-            List<PeopleViewModel> vmList = new List<PeopleViewModel>();
+
+        private IEnumerable<PersonViewModel> GetUsers(List<Person> source) {
+            List<PersonViewModel> vmList = new List<PersonViewModel>();
 
 
             foreach (var person in source)
             {
-                var pvm = new PeopleViewModel();
-                pvm.Id = person.Id;
-                pvm.Name = person.Name;
-                pvm.City = person.City;
-                pvm.PhoneNum = person.PhoneNumber;
+                var PeopleVM = new PersonViewModel();
+                PeopleVM.Id = person.Id;
+                PeopleVM.Name = person.Name;
+                PeopleVM.City = person.City;
+                PeopleVM.PhoneNum = person.PhoneNumber;
                 //mapper!
                 //reason why you should use view model: view model might be different by client request
-                vmList.Add(pvm);
+                vmList.Add(PeopleVM);
             }
 
             return vmList;

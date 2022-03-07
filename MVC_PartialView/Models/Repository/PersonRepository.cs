@@ -28,11 +28,29 @@ namespace MVC_PartialView.Models.Repository
         //Deserializes the JSON to the specified . NET type using a collection of JsonConverter.
         public List<Person> GetAll()
         {
-            if (_people != null) return _people;
+            if (_people == null)
+            {
+                LoadFromJsonFile();
+            }
+            
+            
+            return _people;
+        }
 
+        public Person GetById(int personId)
+        {
+            if (_people == null)
+            {
+                LoadFromJsonFile();
+            }
+
+            return _people.FirstOrDefault(prsn=>prsn.Id == personId);
+        }
+
+        private void LoadFromJsonFile()
+        {
             string jsonFileText = File.ReadAllText("Models/MockJson/People.json");
             _people = JsonConvert.DeserializeObject<List<Person>>(jsonFileText);
-            return _people;
         }
 
         //Removing selected person from the list _people
@@ -51,17 +69,17 @@ namespace MVC_PartialView.Models.Repository
 
         //Creating a person and add it to the list "_people"
         public void Create(string name,string city,long phoneNumber) {
-            Person np = new Person();
-            np.City = city;
-            np.Name = name;
-            np.PhoneNumber = phoneNumber;
+            Person newper = new Person();
+            newper.City = city;
+            newper.Name = name;
+            newper.PhoneNumber = phoneNumber;
 
             int index = 1;
             var lastPerson = _people.LastOrDefault();
             if (lastPerson != null) index = lastPerson.Id + 1;
 
-            np.Id = index;
-            _people.Add(np);
+            newper.Id = index;
+            _people.Add(newper);
             SaveChanges();
         }
 
